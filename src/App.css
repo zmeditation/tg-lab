@@ -1,0 +1,69 @@
+.team-input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.team-button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 40%;
+}
+
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.board {
+  display: flex;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.scoreInput {
+  width: 13px;
+}
+
+.score-row {
+  display: flex;
+}
+
+.sub-board-left {
+  width: 40%;
+  text-align: right;
+  float: right;
+}
+
+.sub-board-right {
+  width: 40%;
+  text-align: left;
+  float: left;
+}
+
+.scoreBoard {
+  width: 30%;
+}
