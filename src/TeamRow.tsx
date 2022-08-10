@@ -1,14 +1,25 @@
 import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { saveTeamInfo } from "./store/toumament";
 import { RootState } from "./store/store";
 
 export const TeamRow = () => {
 
-  const teams = useAppSelector((state: RootState) => state.toumament.teams);
+  let teams = useAppSelector((state: RootState) => state.toumament.teams);
+  const sortedteams = teams.slice().sort((obj1, obj2) => {
+    if (obj1.points < obj2.points) {
+      return 1;
+    }
 
-  const listItems = teams.map((team, index) =>
+    if (obj1.points > obj2.points) {
+      return -1;
+    }
+
+    return 0;
+  });
+
+
+  const listItems = sortedteams.map((team, index) =>
     <tr key={index}>
-      <td>{index}</td>
+      <td>{index + 1}</td>
       <td>{team.name}</td>
       <td>{team.played}</td>
       <td>{team.win}</td>

@@ -15,7 +15,7 @@ export const Toumament = () => {
     setTeam(e.target.value);
   }
   const handleClick = async () => {
-
+    if (teamName == null || teamName == '') return
     let tempTeams = [];
     let team = {
       name: teamName,
@@ -32,7 +32,7 @@ export const Toumament = () => {
   return (
     <div className="App">
       <div>
-        <input type="text" onChange={handleChange} className="team-input" />
+        <input type="text" onChange={handleChange} className="team-input" placeholder="New Team" />
         <button className="team-button" onClick={handleClick}>Add</button>
       </div>
       <div className="mt-20 board">
