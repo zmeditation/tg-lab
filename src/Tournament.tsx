@@ -1,21 +1,18 @@
 import { useState } from "react";
-import { Team } from "./constant"
-import { TeamRow } from "./TeamRow"
-import { ScoreBoard } from "./ScoreBoard"
-import { useAppDispatch, useAppSelector } from "./store/hooks";
+import { Team } from "./constant";
+import { TeamRow } from "./TeamRow";
+import { ScoreBoard } from "./ScoreBoard";
+import { useAppDispatch } from "./store/hooks";
 import { saveTeamInfo } from "./store/toumament";
-import { RootState } from "./store/store";
 
 export const Toumament = () => {
-
-  const initialTeams = new Array;
   const [teamName, setTeam] = useState("");
   const dispatch = useAppDispatch();
   const handleChange = (e: any) => {
     setTeam(e.target.value);
-  }
+  };
   const handleClick = async () => {
-    if (teamName == null || teamName == '') return
+    if (teamName == null || teamName === "") return;
     let tempTeams = [];
     let team = {
       name: teamName,
@@ -27,13 +24,22 @@ export const Toumament = () => {
     } as Team;
     tempTeams.push(team);
     await dispatch(saveTeamInfo(tempTeams));
+    setTeam("");
   };
 
   return (
     <div className="App">
       <div>
-        <input type="text" onChange={handleChange} className="team-input" placeholder="New Team" />
-        <button className="team-button" onClick={handleClick}>Add</button>
+        <input
+          type="text"
+          onChange={handleChange}
+          className="team-input"
+          placeholder="New Team"
+          value={teamName}
+        />
+        <button className="team-button" onClick={handleClick}>
+          Add
+        </button>
       </div>
       <div className="mt-20 board">
         <table className="">
@@ -55,6 +61,5 @@ export const Toumament = () => {
         </div>
       </div>
     </div>
-  )
-}
-
+  );
+};

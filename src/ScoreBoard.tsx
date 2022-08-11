@@ -1,28 +1,23 @@
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { saveTeamScore, setTeamScores } from "./store/toumament";
 import { RootState } from "./store/store";
-import { useState } from "react";
-import React from 'react';
-import ReactDOM from 'react-dom';
 
 export const ScoreBoard = () => {
 
   const teams = useAppSelector((state: RootState) => state.toumament.teams);
   const scores = useAppSelector((state: RootState) => state.toumament.scores);
   const dispatch = useAppDispatch();
-  const [value, setValue] = useState("");
-  //dispatch(setTeamScores({}));
 
   const handlescore = async (e: any) => {
-    const id = e.target.id;
+    const id: string = e.target.id;
     const value = e.target.value;
     const score = { id: id, value: value };
     await dispatch(saveTeamScore(score));
-    let otherId: any = "";
-    if (id.split('-')[2] == "0")
-      otherId = id.split('-')[0] + "-" + id.split('-')[1] + "-" + "1";
+    let otherId: string = "";
+    if (id.split('-')[2] === "0")
+      otherId = id.split('-')[0] + "-" + id.split('-')[1] + "-" + 1;
     else
-      otherId = id.split('-')[0] + "-" + id.split('-')[1] + "-" + "0";
+      otherId = id.split('-')[0] + "-" + id.split('-')[1] + "-" + 0;
     if (Object.keys(scores).includes(otherId)) {
       const ids = { id: id, otherId: otherId }
       await dispatch(setTeamScores(ids));
@@ -41,11 +36,13 @@ export const ScoreBoard = () => {
         <div key={`${i}-${j}`} className="score-row mt-20">
           <div className="sub-board-left">
             {teams[i].name}
+            &nbsp;
             <input type="text" onInput={handleKeyPress} className="scoreInput" id={`${i}-${j}-0`} onBlur={handlescore} defaultValue={scores[`${i}-${j}-0`]} />
             &#8758;
           </div>
           <div className="sub-board-right">
             <input type="text" onInput={handleKeyPress} className="scoreInput" id={`${i}-${j}-1`} onBlur={handlescore} defaultValue={scores[`${i}-${j}-1`]} />
+            &nbsp;
             {teams[j].name}
           </div>
         </div> : ''

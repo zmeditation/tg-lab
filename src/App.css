@@ -56,12 +56,15 @@ ul {
   width: 40%;
   text-align: right;
   float: right;
+  font-weight: bold;
 }
 
 .sub-board-right {
   width: 40%;
   text-align: left;
   float: left;
+  font-weight: bold;
+
 }
 
 .scoreBoard {
@@ -71,4 +74,9 @@ ul {
 .App {
   padding-left: 30px;
   padding-top: 30px;
+}
+
+th,
+td {
+  text-align: center;
 }
